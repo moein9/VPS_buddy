@@ -23,6 +23,41 @@ chmod +x VPS_buddy.sh
 *  installing windscribe VPN
 *  making or downloading a fresh list of resolvers
 
+# Tools
+
+- nuclei & nuclei templates
+- dirsearch
+- JSParser
+- knockpy
+- lazys3
+- sqlmap-dev
+- Sublist3r
+- teh_s3_bucketeers
+- virtual-host-discovery
+- wpscan
+- webscreenshot
+- Massdns
+- Asnlookup
+- gau
+- Seclists 
+- httpx
+- aquatone
+- ffuf
+- ParamSpider
+- subfinder
+- massDNS
+- subDomainizer
+- knockpy
+- subbrute
+- Asset Finder
+- Amass
+- LinkFinder
+- Subjack
+- Open Redirect Scanner
+- NMap
+- HTTProbe
+- dalfox
+- gf
 
 ## TO DO
 
