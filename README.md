@@ -1,7 +1,7 @@
 # VPS_buddy
 this is a simple script to help you to quickly install tools on your VPS
 
-**this script is written by a noob and it is the collection of tools from early days of starting bug bounty some of them are popular and some of them don't. or may be i had just used them once and i uploaded this in here to make things easier for my self **
+**this script is written by a noob and it is the collection of tools from the early days of starting bug bounty some of them are popular and some of them don't. or maybe I had just used them once and I uploaded this in here to make things easier for myself**
 
 ## Installation
 
