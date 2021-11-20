@@ -3,15 +3,32 @@
 ## GLOBAL VARIABLES
 
 ToolsPath="/root/tools"
+mkdir $ToolsPath/VPS_buddy_trash
+
+if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
+then 
 
 echo "updating and upgrading"
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt full-upgrade -y
 
+touch $ToolsPath/VPS_buddy_trash/.update_done
 echo "done"
 
+fi
+
+if [[ ! -f  $ToolsPath/VPS_buddy_trash/.common_tools ]]
+then
 echo "installing common tools and python and few dependencies"
+
+
+echo "Installing pip"
+cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+python get-pip.py
+sudo python get-pip.py
+rm get-pip.py
+
 sudo apt-get install software-properties-common
 sudo apt-add-repository universe
 sudo apt install python-pip
@@ -63,7 +80,10 @@ sudo apt-get install googler
 sudo apt-get install nmap
 sudo apt-get install sublime-text
 
+touch $ToolsPath/VPS_buddy_trash/.common_tools
 echo "done"
+
+fi 
 
 #create a tools folder in ~/
 mkdir $ToolsPath
@@ -91,12 +111,6 @@ then
  cat bash_profile >> ~/.bash_profile
 source ~/.bash_profile
 fi
-
-echo "Installing pip"
-cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
-python get-pip.py
-sudo python get-pip.py
-rm get-pip.py
 
 
 
