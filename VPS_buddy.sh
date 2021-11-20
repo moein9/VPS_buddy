@@ -63,21 +63,21 @@ sudo pip install py-altdns
 sudo pip install dnspython==2.0.0
 sudo pip install truffleHog
 sudo gem install wpscan
-sudo apt install transmission-cli
+sudo apt install -y transmission-cli
 sudo apt install -y awscli
-sudo apt install snapd
-sudo apt install chromium
-sudo apt install sshpass
+sudo apt install -y snapd
+sudo apt install -y chromium
+sudo apt install -y sshpass
 sudo systemctl enable --now snapd apparmor
 sudo pip3 install ddgr
 sudo pip3 install --upgrade pycurl
 sudo pip3 install s3scanner
 sudo pip3 install dnsgen
 sudo pip3 install arjun
-sudo apt-get install neofetch
-sudo apt-get install googler
-sudo apt-get install nmap
-sudo apt-get install sublime-text
+sudo apt-get install -y neofetch
+sudo apt-get install -y googler
+sudo apt-get install -y nmap
+sudo apt-get install -y sublime-text
 
 touch $ToolsPath/VPS_buddy_trash/.common_tools
 echo "done"
