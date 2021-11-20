@@ -12,7 +12,7 @@ chmod +x VPS_buddy.sh
 ./VPS_buddy.sh
 ```
 
-## what it is.
+## what it does
 
 *  installing common tools and python and few dependencies
 *  installing GO and checking for its updates 
