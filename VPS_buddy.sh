@@ -29,20 +29,20 @@ python get-pip.py
 sudo python get-pip.py
 rm get-pip.py
 
-sudo apt-get install software-properties-common
 sudo apt-add-repository universe
-sudo apt install python3-pip
-sudo apt install cargo
+sudo apt-get install -y software-properties-common
+sudo apt-get install -y python3-pip
+sudo apt-get install -y cargo
 sudo apt-get install -y libcurl4-openssl-dev
 sudo apt-get install -y libssl-dev
 sudo apt-get install -y jq
 sudo apt-get install -y ruby-full
-sudo apt-get install rubygems
+sudo apt-get install -y rubygems
 sudo apt-get install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev
 sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev
 sudo apt-get install -y python-setuptools
 sudo apt-get install -y libldns-dev
-sudo apt-get install libssl-dev swig -y
+sudo apt-get install -y libssl-dev swig 
 sudo apt-get install -y python3-pip
 sudo apt-get install -y python-pip
 sudo apt-get install -y python-dnspython
@@ -50,11 +50,11 @@ sudo apt-get install -y git
 sudo apt-get install -y rename
 sudo apt-get install -y xargs
 sudo apt-get install -y httpie
-sudo apt-get install curl
-sudo apt-get install libcurl4-openssl-dev
-sudo apt-get install docker
-sudo apt-get install dnsutils
-sudo apt-get install python3-pip
+sudo apt-get install -y curl
+sudo apt-get install -y libcurl4-openssl-dev
+sudo apt-get install -y docker
+sudo apt-get install -y dnsutils
+sudo apt-get install -y python3-pip
 
 
 sudo apt install figlet
