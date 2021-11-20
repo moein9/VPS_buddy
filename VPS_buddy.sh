@@ -31,7 +31,6 @@ rm get-pip.py
 
 sudo apt-get install software-properties-common
 sudo apt-add-repository universe
-sudo apt install python-pip
 sudo apt install python3-pip
 sudo apt install cargo
 sudo apt-get install -y libcurl4-openssl-dev
