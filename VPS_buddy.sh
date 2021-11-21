@@ -499,12 +499,12 @@ echo "do you want to make a list of fresh resolvers (slow) [Y] OR you want to ge
 read -n1 -p "[y,n]" doit 
 case $doit in  
   y|Y) cd $ToolsPath/dnsvalidator
-dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o resolvers.txt
+dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o $ToolsPath/resolvers.txt
  ;; 
   n|N) wget https://raw.githubusercontent.com/BonJarber/fresh-resolvers/main/resolvers.txt -O $ToolsPath/resolvers.txt 
 
  ;; 
-  *) echo "enter Y for slowly making list of resolvers or N for fastly downloading it from github" ;; 
+  *) echo "none of them excuted" ;; 
 esac
 
 echo "cleaning"
