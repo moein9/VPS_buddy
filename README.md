@@ -12,6 +12,8 @@ chmod +x VPS_buddy.sh
 ./VPS_buddy.sh
 ```
 
+_NOTE : default installationg path is /root/tools_
+
 ## what it does
 
 *  installing common tools and python and few dependencies
