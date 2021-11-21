@@ -6,6 +6,9 @@ ToolsPath="/root/tools"
 mkdir $ToolsPath 2>/dev/null
 mkdir $ToolsPath/VPS_buddy_trash
 
+apt-get install sudo
+sudo apt install git-all
+
 if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
 then 
 
