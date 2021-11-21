@@ -53,8 +53,7 @@ chmod +x VPS_buddy.sh
 - Amass
 - LinkFinder
 - Subjack
-- Open Redirect Scanner
-- NMap
+- Nmap
 - HTTProbe
 - dalfox
 - gf
