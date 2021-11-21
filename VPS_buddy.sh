@@ -513,4 +513,5 @@ dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o $ToolsPa
 esac
 
 echo "cleaning"
+rm -r  $ToolsPath/VPS_buddy_trash
 sudo apt autoremove
