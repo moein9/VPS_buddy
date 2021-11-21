@@ -3,6 +3,7 @@
 ## GLOBAL VARIABLES
 
 ToolsPath="/root/tools"
+mkdir $ToolsPath 2>/dev/null
 mkdir $ToolsPath/VPS_buddy_trash
 
 if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
