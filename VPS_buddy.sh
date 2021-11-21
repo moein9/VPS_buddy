@@ -367,7 +367,7 @@ cd LiveTargetsFinder
 sudo pip3 install -r requirements.txt
 chmod +x install_deps.sh
 #there is an error in this tool which will be fixed by this line , for more info checkout https://github.com/allyomalley/LiveTargetsFinder/issues/3
-sed -i '9s/^/\ngit checkout 65331fb528755621650a0fbacff12102cfdcdde9\n /' ./install_deps.sh
+sed -i '10s/^/\ngit checkout 65331fb528755621650a0fbacff12102cfdcdde9\n /' ./install_deps.sh
 ./install_deps.sh
 cd $ToolsPath/
 echo "done"
