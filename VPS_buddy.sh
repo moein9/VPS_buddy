@@ -6,15 +6,16 @@ ToolsPath="/root/tools"
 mkdir $ToolsPath 2>/dev/null
 mkdir $ToolsPath/VPS_buddy_trash
 
-apt-get install sudo
-sudo apt install git-all
+
 
 if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
 then 
 
 echo "updating and upgrading"
-sudo apt-get -y update
-sudo apt-get -y upgrade
+apt-get -y update
+apt-get -y upgrade
+apt-get -y install sudo
+sudo apt -y install git-all
 sudo apt full-upgrade -y
 
 touch $ToolsPath/VPS_buddy_trash/.update_done
