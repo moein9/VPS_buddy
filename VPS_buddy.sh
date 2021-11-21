@@ -68,7 +68,7 @@ sudo apt install docker-ce
 echo "done"
 
 
-sudo apt install figlet
+
 sudo pip install snallygaster
 sudo pip install py-altdns
 sudo pip install dnspython==2.0.0
@@ -89,6 +89,8 @@ sudo apt-get install -y neofetch
 sudo apt-get install -y googler
 sudo apt-get install -y nmap
 sudo apt-get install -y sublime-text
+sudo apt-get install -y wget
+sudo apt-get install -y figlet
 
 touch $ToolsPath/VPS_buddy_trash/.common_tools
 echo "done"
@@ -107,6 +109,12 @@ curl -O https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 source $HOME/.profile
+
+echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
+echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
+echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
+source ~/.bash_profile
+
 
 cd $ToolsPath/
 git clone https://github.com/udhos/update-golang
