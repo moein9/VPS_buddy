@@ -143,7 +143,7 @@ echo "done"
 echo "Installing amass"
 sudo snap install amass
 export PATH=$PATH:/snap/bin
-
+cd $ToolsPath/
 echo "done"
 
 echo "installing JSParser"
