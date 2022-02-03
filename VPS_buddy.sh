@@ -34,6 +34,7 @@ cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
 python get-pip.py
 sudo python3 get-pip.py
 rm get-pip.py
+/usr/bin/python3 -m pip install --upgrade pip
 
 sudo apt-add-repository universe
 sudo apt-get install -y software-properties-common
