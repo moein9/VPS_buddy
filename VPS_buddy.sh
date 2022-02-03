@@ -31,7 +31,7 @@ echo "installing common tools and python and few dependencies"
 echo "Installing pip"
 cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
 python get-pip.py
-sudo python get-pip.py
+sudo python3 get-pip.py
 rm get-pip.py
 
 sudo apt-add-repository universe
@@ -77,7 +77,6 @@ sudo gem install wpscan
 sudo apt install -y transmission-cli
 sudo apt install -y awscli
 sudo apt install -y snapd
-sudo apt install -y chromium
 sudo apt install -y sshpass
 sudo systemctl enable --now snapd apparmor
 sudo pip3 install ddgr
@@ -104,22 +103,18 @@ cd $ToolsPath/
 #install go
  if [[ -z "$GOPATH" ]]
  then
-cd ~
-curl -O https://golang.org/dl/go1.17.3.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.3.linux-amd64.tar.gz
-export PATH=$PATH:/usr/local/go/bin
-source $HOME/.profile
-
-echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-echo 'export GOPATH=$HOME/go'	>> ~/.bash_profile			
-echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile	
-source ~/.bash_profile
-
-
-cd $ToolsPath/
-git clone https://github.com/udhos/update-golang
-cd update-golang
-sudo ./update-golang.sh				
+ 
+echo "Installing Golang"
+          wget https://dl.google.com/go/go1.17.6.linux-amd64.tar.gz
+          sudo tar -xvf go1.17.6.linux-amd64.tar.gz
+          sudo mv go /usr/local
+          export GOROOT=/usr/local/go
+          export GOPATH=$HOME/go
+          export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+          echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
+          echo 'export GOPATH=$HOME/go' >> ~/.bash_profile      
+          echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile 
+          source ~/.bash_profile		
 	
 cd ~/
  fi
