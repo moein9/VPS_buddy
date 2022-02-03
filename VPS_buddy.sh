@@ -5,7 +5,8 @@
 ToolsPath="/root/tools"
 mkdir $ToolsPath 2>/dev/null
 mkdir $ToolsPath/VPS_buddy_trash
-
+mkdir /root/codes
+mkdir /root/targets
 
 
 if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
