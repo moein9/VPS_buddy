@@ -364,6 +364,11 @@ sudo make install
 cd $ToolsPath/
 echo "done"
 
+
+echo "cloning  bug bounty toolz"
+https://github.com/m4ll0k/BBTz.git
+echo "done"
+
 echo "installing asnlookup"
 git clone https://github.com/yassineaboukir/asnlookup.git
 cd $ToolsPath/asnlookup
@@ -400,6 +405,10 @@ echo "done"
 
 echo "installing hakrawler"
 go get github.com/hakluke/hakrawler
+echo "done"
+
+echo "installing protoscan"
+go get github.com/KathanP19/protoscan
 echo "done"
 
 echo "installing unfurl"
