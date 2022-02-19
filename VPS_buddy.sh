@@ -231,6 +231,12 @@ cd Thorin
 pip3 install -r requirements.txt 
 cd $ToolsPath/
 
+echo "installing crlfuzz"
+git clone https://github.com/dwisiswant0/crlfuzz
+cd crlfuzz/cmd/crlfuzz
+go build .
+mv crlfuzz /usr/local/bin
+cd $ToolsPath/
 
 echo "installing theHarvester"
 git clone https://github.com/laramies/theHarvester 
