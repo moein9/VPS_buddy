@@ -61,6 +61,7 @@ sudo apt-get install -y curl
 sudo apt-get install -y libcurl4-openssl-dev
 sudo apt-get install -y dnsutils
 sudo apt-get install -y python3-pip
+sudo apt-get install -y ghex
 
 echo "Installing docker"
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
