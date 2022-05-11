@@ -164,6 +164,8 @@ python3 -m pip3 install -r requirements.txt
 cd $ToolsPath/
 echo " done"
 
+echo "installing smuggler"
+git clone https://github.com/defparam/smuggler.git
 
 echo "installing 403bypasser"
 git clone https://github.com/yunemse48/403bypasser.git
