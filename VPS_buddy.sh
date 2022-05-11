@@ -503,6 +503,7 @@ git clone https://github.com/tennc/fuzzdb.git
 git clone https://github.com/danielmiessler/SecLists.git
 git clone https://github.com/the-xentropy/samlists.git
 cd $ToolsPath/SecLists/Discovery/
+wget https://raw.githubusercontent.com/rbsec/dnscan/master/tlds.txt
 wget https://gist.githubusercontent.com/six2dez/a307a04a222fab5a57466c51e1569acf/raw -O subbrute
 wget https://gist.githubusercontent.com/nullenc0de/96fb9e934fc16415fbda2f83f08b28e7/raw/146f367110973250785ced348455dc5173842ee4/content_discovery_nullenc0de.txt
 wget https://gist.githubusercontent.com/jhaddix/b80ea67d85c13206125806f0828f4d10/raw/c81a34fe84731430741e0463eb6076129c20c4c0/content_discovery_all.txt
