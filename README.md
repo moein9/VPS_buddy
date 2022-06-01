@@ -1,7 +1,9 @@
 # VPS_buddy
  a simple script  to quickly install tools on your VPS it will help you fix alot of errors and dependencies issue
 
-**this script is written by a noob and it is the collection of tools from the early days of starting bug bounty some of them are popular and some of them don't. or maybe I had just used them once , I uploaded this in here to make things easier for myself , i got the idea from nahamsec**
+**this script is written by a noob and it is the collection of tools from the early days of starting bug bounty some of them are popular and some of them don't. 
+or maybe I had just used them once ,
+I uploaded this in here to make things easier for myself , i got the idea from nahamsec**
 
 ## Installation
 
