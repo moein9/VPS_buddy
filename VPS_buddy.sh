@@ -123,6 +123,7 @@ fi
 #mkdir $ToolsPath
 cd $ToolsPath/
 
+go env -w GO111MODULE=off
 
 # Install Aquatone
 echo "Installing Aquatone"
