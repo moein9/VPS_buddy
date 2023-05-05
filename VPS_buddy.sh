@@ -37,7 +37,7 @@ if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
      # Install common packages
     APT_INSTALL="sudo apt-get install -y"
     PIP_INSTALL="pip3 install"
-    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2 python3"
+    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2 python3 python-is-python3"
     for pkg in $PACKAGES; do
         $APT_INSTALL $pkg
     done
