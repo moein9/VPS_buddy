@@ -530,7 +530,7 @@ case $doit in
   y|Y) cd $ToolsPath/dnsvalidator
 dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o $ToolsPath/resolvers.txt
  ;; 
-  n|N) wget https://raw.githubusercontent.com/BonJarber/fresh-resolvers/main/resolvers.txt -O $ToolsPath/resolvers.txt 
+  n|N) wget https://raw.githubusercontent.com/trickest/resolvers/main/resolvers.txt -O $ToolsPath/resolvers.txt 
 
  ;; 
   *) echo "none of them excuted" ;; 
