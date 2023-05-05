@@ -28,7 +28,7 @@ fi
 
 
 set -e
-#the above line id for exit on error ,it is better to exit if an error detected IMO.
+#the above line id for exit on error un comment it if you want it ,it is better to exit if an error detected IMO.
 
 
 if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
@@ -120,7 +120,7 @@ source ~/.bash_profile
 fi
 
 #create a tools folder in ~/
-mkdir $ToolsPath
+#mkdir $ToolsPath
 cd $ToolsPath/
 
 
