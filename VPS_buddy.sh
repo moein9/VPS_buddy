@@ -466,6 +466,10 @@ echo "Installing subfinder"
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 echo "Done"
 
+echo "Installing uncover"
+go install -v github.com/projectdiscovery/uncover/cmd/uncover@latest
+echo "done"
+
 echo "Installing shuffledns"
 go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 echo "Done"
