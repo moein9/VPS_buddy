@@ -104,28 +104,43 @@ fi
 mkdir $ToolsPath
 cd $ToolsPath/
 
-#install go
- if [[ -z "$GOPATH" ]]
- then
- 
-echo "Installing Golang"
-          wget https://go.dev/dl/go1.20.1.linux-arm64.tar.gz
-	  sudo rm -rf /usr/local/go
-          sudo tar -C /usr/local -xzf go*.tar.gz
-#           sudo mv go /usr/local
-#           export GOROOT=/usr/local/go
-#           export GOPATH=$HOME/go
-#           export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-#           echo 'export GOROOT=/usr/local/go' >> ~/.bash_profile
-#           echo 'export GOPATH=$HOME/go' >> ~/.bash_profile      
-#           echo 'export PATH=$GOPATH/bin:$GOROOT/bin:$PATH' >> ~/.bash_profile 
-#           source ~/.bash_profile
-	  echo 'export PATH=$PATH:/usr/local/go/bin:/root/go/bin' >>~/.profile
-	  sudo sh -c 'echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile'
-	  export PATH=$PATH:/usr/local/go/bin
-	
-cd ~/
- fi
+
+# Check if Go is already installed
+if ! command -v go &> /dev/null; then
+  echo "Installing Go"
+  
+  # Determine the machine architecture
+  machine_arch="$(uname -m)"
+  
+  # Set the appropriate download URL based on the machine architecture
+  case "${machine_arch}" in
+    "x86_64")
+      download_url="https://go.dev/dl/go1.20.4.linux-amd64.tar.gz"
+      ;;
+    "aarch64")
+      download_url="https://go.dev/dl/go1.20.4.linux-arm64.tar.gz"
+      ;;
+    "i386"|"i686")
+      download_url="https://go.dev/dl/go1.20.4.linux-386.tar.gz"
+      ;;
+    "arm64")
+      download_url="https://go.dev/dl/go1.20.4.darwin-arm64.tar.gz"
+      ;;
+    *)
+      echo "Unsupported machine architecture: ${machine_arch}"
+      exit 1
+      ;;
+  esac
+
+  # Download and extract the appropriate version of Go
+  curl -L -s "${download_url}" -o go.tar.gz
+  sudo tar -C /usr/local -xzf go.tar.gz
+
+  # Set up environment variables
+  export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+  echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> ~/.bashrc
+  source ~/.bashrc
+fi
 
  if [[ -f ./bash_profile ]]
 then
