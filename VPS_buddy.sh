@@ -9,6 +9,8 @@ mkdir /root/codes
 mkdir /root/targets
 
 
+
+
 if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
 then 
 
@@ -24,85 +26,52 @@ echo "done"
 
 fi
 
-if [[ ! -f  $ToolsPath/VPS_buddy_trash/.common_tools ]]
-then
-echo "installing common tools and python and few dependencies"
 
+set -e
 
-echo "Installing pip"
-cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
-python get-pip.py
-sudo python3 get-pip.py
-rm get-pip.py
-/usr/bin/python3 -m pip install --upgrade pip
+ToolsPath=/path/to/tools
 
-sudo apt-add-repository universe
-sudo apt-get install -y software-properties-common
-sudo apt-get install -y python3-pip
-sudo apt-get install -y cargo
-sudo apt-get install -y libcurl4-openssl-dev
-sudo apt-get install -y libssl-dev
-sudo apt-get install -y jq
-sudo apt-get install -y ruby-full
-sudo apt-get install -y rubygems
-sudo apt-get install -y libcurl4-openssl-dev libxml2 libxml2-dev libxslt1-dev ruby-dev build-essential libgmp-dev zlib1g-dev
-sudo apt-get install -y build-essential libssl-dev libffi-dev python-dev
-sudo apt-get install -y python-setuptools
-sudo apt-get install -y libldns-dev
-sudo apt-get install -y libssl-dev swig 
-sudo apt-get install -y python3-pip
-sudo apt-get install -y python-pip
-sudo apt-get install -y python-dnspython
-sudo apt-get install -y git
-sudo apt-get install -y rename
-sudo apt-get install -y xargs
-sudo apt-get install -y httpie
-sudo apt-get install -y curl
-sudo apt-get install -y libcurl4-openssl-dev
-sudo apt-get install -y dnsutils
-sudo apt-get install -y python3-pip
-sudo apt-get install -y ghex
-sudo apt-get install -y parallel
+if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
+    echo "Installing common tools and Python and few dependencies"
 
-echo "Installing docker"
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-sudo apt install docker-ce
-echo "done"
+    # Install pip
+    cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+    python get-pip.py
+    python3 get-pip.py
+    rm get-pip.py
+    pip3 install --upgrade pip
+
+    # Install common packages
+    APT_INSTALL="sudo apt-get install -y"
+    PIP_INSTALL="pip3 install"
+    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel"
+    for pkg in $PACKAGES; do
+        $APT_INSTALL $pkg
+    done
+
+    # Install Python packages
+    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun
+
+    # Install docker
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sh get-docker.sh
+    rm get-docker.sh
+
+    # Install other packages
+    $APT_INSTALL transmission-cli awscli snapd sshpass neofetch googler nmap wget figlet
+
+    # Install wpscan
+    gem install wpscan
+
+    # Enable snapd
+    systemctl enable --now snapd apparmor
+
+    touch $ToolsPath/VPS_buddy_trash/.common_tools
+    echo "Done"
+fi
 
 
 
-sudo pip install snallygaster
-sudo pip install py-altdns
-sudo pip install dnspython==2.0.0
-sudo pip install truffleHog
-sudo gem install wpscan
-sudo apt install -y transmission-cli
-sudo apt install -y awscli
-sudo apt install -y snapd
-sudo apt install -y sshpass
-sudo systemctl enable --now snapd apparmor
-sudo pip3 install ddgr
-sudo pip3 install --upgrade pycurl
-sudo pip3 install s3scanner
-sudo pip3 install dnsgen
-sudo pip3 install arjun
-sudo apt-get install -y neofetch
-sudo apt-get install -y googler
-sudo apt-get install -y nmap
-sudo apt-get install -y sublime-text
-sudo apt-get install -y wget
-sudo apt-get install -y figlet
-
-touch $ToolsPath/VPS_buddy_trash/.common_tools
-echo "done"
-
-fi 
-
-#create a tools folder in ~/
-mkdir $ToolsPath
-cd $ToolsPath/
 
 
 # Check if Go is already installed
@@ -148,256 +117,267 @@ then
 source ~/.bash_profile
 fi
 
+#create a tools folder in ~/
+mkdir $ToolsPath
+cd $ToolsPath/
 
 
-
-#install aquatone
+# Install Aquatone
 echo "Installing Aquatone"
 go get github.com/michenriksen/aquatone
-echo "done"
+echo "Aquatone installed"
 
-#install chromium
+# Install Chromium
 echo "Installing Chromium"
 sudo snap install chromium
-echo "done"
+echo "Chromium installed"
 
-#install amass
-echo "Installing amass"
+# Install Amass
+echo "Installing Amass"
 sudo snap install amass
 export PATH=$PATH:/snap/bin
-cd $ToolsPath/
-echo "done"
+echo "Amass installed"
 
-echo "installing JSParser"
+# Install JSParser
+echo "Installing JSParser"
 git clone https://github.com/nahamsec/JSParser.git
-cd JSParser*
+cd JSParser
 sudo python setup.py install
-cd $ToolsPath/
-echo "done"
+cd ..
+echo "JSParser installed"
 
-
-
-echo "installing GitDorker"
+# Install GitDorker
+echo "Installing GitDorker"
 git clone https://github.com/obheda12/GitDorker.git
 cd GitDorker
-python3 -m pip3 install -r requirements.txt
-cd $ToolsPath/
-echo " done"
+python3 -m pip install -r requirements.txt
+cd ..
+echo "GitDorker installed"
 
-echo "installing smuggler"
+# Install smuggler
+echo "Installing smuggler"
 git clone https://github.com/defparam/smuggler.git
+echo "smuggler installed"
 
-echo "installing 403bypasser"
+# Install 403bypasser
+echo "Installing 403bypasser"
 git clone https://github.com/yunemse48/403bypasser.git
+echo "403bypasser installed"
 
-echo "installing LinEnum"
+# Install LinEnum
+echo "Installing LinEnum"
 git clone https://github.com/rebootuser/LinEnum.git
+echo "LinEnum installed"
 
-echo "installing IIS-ShortName-Scanner"
+# Install IIS-ShortName-Scanner
+echo "Installing IIS-ShortName-Scanner"
 git clone https://github.com/irsdl/IIS-ShortName-Scanner.git
+echo "IIS-ShortName-Scanner installed"
 
-echo "installing Lilly"
+# Install Lilly
+echo "Installing Lilly"
 git clone https://github.com/Dheerajmadhukar/Lilly.git
+echo "Lilly installed"
 
-echo "installing VHostScan"
+# Install VHostScan
+echo "Installing VHostScan"
 git clone https://github.com/codingo/VHostScan.git
+echo "VHostScan installed"
 
-echo "installing Bug-Bounty-Toolz"
-gti clone https://github.com/m4ll0k/Bug-Bounty-Toolz.git
+# Install Bug-Bounty-Toolz
+echo "Installing Bug-Bounty-Toolz"
+git clone https://github.com/m4ll0k/Bug-Bounty-Toolz.git
+echo "Bug-Bounty-Toolz installed"
 
-echo "installing Autorize"
+# Install Autorize
+echo "Installing Autorize"
 git clone https://github.com/Quitten/Autorize.git
+echo "Autorize installed"
 
-echo "installing Dr.-Watson"
+# Install Dr.-Watson
+echo "Installing Dr.-Watson"
 git clone https://github.com/prodigysml/Dr.-Watson.git
+echo "Dr.-Watson installed"
 
-echo "installing reflector"
+# Install Reflector
+echo "Installing Reflector"
 git clone https://github.com/elkokc/reflector.git
+echo "Reflector installed"
 
-echo "installing BurpSuite_403Bypasser"
+# Install BurpSuite_403Bypasser
+echo "Installing BurpSuite_403Bypasser"
 git clone https://github.com/sting8k/BurpSuite_403Bypasser.git
+echo "BurpSuite_403Bypasser installed"
 
-echo "installing tplmap"
+# Install tplmap
+echo "Installing tplmap"
 git clone https://github.com/epinna/tplmap.git
+echo "tplmap installed"
 
-echo "installing scripthunter"
+# Install scripthunter
+echo "Installing scripthunter"
 git clone https://github.com/robre/scripthunter.git
-echo "done"
+echo "scripthunter installed"
 
-echo "installing Sublist3r"
+# Install Sublist3r
+echo "Installing Sublist3r"
 git clone https://github.com/aboul3la/Sublist3r.git
-cd Sublist3r*
+cd Sublist3r
 pip install -r requirements.txt
-echo "done"
+cd ..
+echo "Sublist3r installed"
 
-
-
-echo "installing urlgrab"
+echo "Installing urlgrab"
 cd $ToolsPath/
 git clone https://github.com/IAmStoxe/urlgrab.git
 cd urlgrab
-go build 
-go get -u github.com/iamstoxe/urlgrab
+go build
+go install
 
 cd $ToolsPath/
 
-echo "installing takeover"
+echo "Installing takeover"
 git clone https://github.com/m4ll0k/takeover.git
 cd takeover
+python3 -m pip install -r requirements.txt
 python3 setup.py install
 
 cd $ToolsPath/
 
-echo "installing thorin"
+echo "Installing thorin"
 git clone https://github.com/raoufmaklouf/Thorin.git
 cd Thorin
-pip3 install -r requirements.txt 
+python3 -m pip install -r requirements.txt
+
 cd $ToolsPath/
 
-echo "installing crlfuzz"
+echo "Installing crlfuzz"
 git clone https://github.com/dwisiswant0/crlfuzz
 cd crlfuzz/cmd/crlfuzz
 go build .
-mv crlfuzz /usr/local/bin
+sudo mv crlfuzz /usr/local/bin
 cd $ToolsPath/
 
-echo "installing theHarvester"
-git clone https://github.com/laramies/theHarvester 
+echo "Installing theHarvester"
+git clone https://github.com/laramies/theHarvester
 cd theHarvester
 python3 -m pip install -r requirements/base.txt
 
-
 cd $ToolsPath/
 
-echo "installing ParamSpider"
+echo "Installing ParamSpider"
 git clone https://github.com/devanshbatham/ParamSpider
 cd ParamSpider
-pip3 install -r requirements.txt
+python3 -m pip install -r requirements.txt
 
 cd $ToolsPath/
 
-echo "installing x8"
+echo "Installing x8"
 git clone https://github.com/Sh1Yo/x8
 cd x8
 cargo build --release
 
 cd $ToolsPath/
 
-echo "done"
-
-
-echo "installing teh_s3_bucketeers"
+echo "Installing teh_s3_bucketeers"
 git clone https://github.com/tomdev/teh_s3_bucketeers.git
+
 cd $ToolsPath/
-echo "done"
 
-
-
-echo "installing SubDomainzer"
+echo "Installing SubDomainizer"
 git clone https://github.com/nsonaniya2010/SubDomainizer.git
 cd SubDomainizer
-pip3 install -r requirements.txt
+python3 -m pip install -r requirements.txt
+
 cd $ToolsPath/
-echo "done"
 
-
-echo "installing Linkfinder"
+echo "Installing Linkfinder"
 git clone https://github.com/GerbenJavado/LinkFinder.git
 cd LinkFinder
-python setup.py install
-pip3 install -r requirements.txt
-cd $ToolsPath/
-echo "done"
+python3 setup.py install
+python3 -m pip install -r requirements.txt
 
-echo "installing apkleak"
+cd $ToolsPath/
+
+echo "Installing apkleak"
 git clone https://github.com/dwisiswant0/apkleaks
 cd apkleaks/
-pip install -r requirements.txt
+python3 -m pip install -r requirements.txt
+
 cd $ToolsPath/
-echo "done"
 
-
-echo "installing Knock"
+echo "Installing Knock"
 git clone https://github.com/guelfoweb/knock.git
 cd knock
-sudo python setup.py install
+sudo python3 setup.py install
+
 cd $ToolsPath/
-echo "done"
 
-
-
-echo "installing wpscan"
+echo "Installing wpscan"
 git clone https://github.com/wpscanteam/wpscan.git
-cd wpscan*
+cd wpscan
 sudo gem install bundler && bundle install --without test
-cd $ToolsPath/
-echo "done"
 
-echo "installing dirsearch"
+cd $ToolsPath/
+
+echo "Installing dirsearch"
 git clone https://github.com/maurosoria/dirsearch.git
-cd dirsearch
-pip3 install -r requirements.txt
-echo "done"
 
+cd $ToolsPath/
 
-echo "installing lazys3"
+echo "Installing lazys3"
 git clone https://github.com/nahamsec/lazys3.git
-cd $ToolsPath/
-echo "done"
 
-echo "installing virtual host discovery"
+cd $ToolsPath/
+
+echo "Installing virtual host discovery"
 git clone https://github.com/jobertabma/virtual-host-discovery.git
+
 cd $ToolsPath/
-echo "done"
 
+echo "Installing nikto"
+git clone https://github.com/sullo/nikto.git
 
-echo "installing nikto"
-git clone https://github.com/sullo/nikto
 cd $ToolsPath/
-echo "done"
 
-
-
-echo "installing sqlmap"
+echo "Installing sqlmap"
 git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
-cd $ToolsPath/
-echo "done"
 
-echo "installing  impacket"
+cd $ToolsPath/
+echo "Installing Impacket..."
 git clone https://github.com/SecureAuthCorp/impacket.git
 cd impacket/
 pip3 install .
 cd $ToolsPath/
-echo "done"
+echo "Impacket installed successfully."
 
-echo "installing lazyrecon"
+echo "Installing Lazyrecon..."
 git clone https://github.com/nahamsec/lazyrecon.git
-cd $ToolsPath/
-echo "done"
+cd lazyrecon/
+echo "Lazyrecon installed successfully."
 
-echo "installing nmap"
+echo "Installing Nmap..."
 sudo apt-get install -y nmap
-echo "done"
+echo "Nmap installed successfully."
 
-echo "installing massdns"
+echo "Installing Massdns..."
 git clone https://github.com/blechschmidt/massdns.git
-cd $ToolsPath/massdns
+cd massdns/
 make
 sudo make install
 cd $ToolsPath/
-echo "done"
+echo "Massdns installed successfully."
 
+echo "Cloning Bug Bounty Toolz..."
+git clone https://github.com/m4ll0k/BBTz.git
+echo "Bug Bounty Toolz cloned successfully."
 
-echo "cloning  bug bounty toolz"
-https://github.com/m4ll0k/BBTz.git
-echo "done"
-
-echo "installing asnlookup"
+echo "Installing ASNlookup..."
 git clone https://github.com/yassineaboukir/asnlookup.git
-cd $ToolsPath/asnlookup
+cd asnlookup/
 pip install -r requirements.txt
 cd $ToolsPath/
-echo "done"
+echo "ASNlookup installed successfully."
 
 
 echo "installing live targetfinder"
@@ -411,111 +391,108 @@ sed -i '10s/^/\ngit checkout 65331fb528755621650a0fbacff12102cfdcdde9\n /' ./ins
 cd $ToolsPath/
 echo "done"
 
-echo "installing dnsvalidator"
+echo "Installing Dnsvalidator..."
 git clone https://github.com/vortexau/dnsvalidator.git
-cd $ToolsPath/dnsvalidator
+cd dnsvalidator/
 python3 setup.py install
 cd $ToolsPath/
-echo "done"
+echo "Dnsvalidator installed successfully."
 
-echo "installing httprobe"
-go get -u github.com/tomnomnom/httprobe 
-echo "done"
+echo "Installing Httprobe..."
+go get -u github.com/tomnomnom/httprobe
+echo "Httprobe installed successfully."
 
-echo "installing ppscanner"
+echo "Installing Ppscanner..."
 go get -u github.com/Raywando/ppscanner
-echo "done"
+echo "Ppscanner installed successfully."
 
-echo "installing hakrawler"
+echo "Installing Hakrawler..."
 go get github.com/hakluke/hakrawler
-echo "done"
+echo "Hakrawler installed successfully."
 
-echo "installing protoscan"
+echo "Installing Protoscan..."
 go get github.com/KathanP19/protoscan
-echo "done"
+echo "Protoscan installed successfully."
 
-echo "installing unfurl"
-go get -u github.com/tomnomnom/unfurl 
-echo "done"
+echo "Installing Unfurl..."
+go get -u github.com/tomnomnom/unfurl
+echo "Unfurl installed successfully."
 
-echo "installing tomnomnom tools "
-
+echo "Installing Tomnomnom Tools..."
 cd $ToolsPath
 git clone https://github.com/tomnomnom/hacks.git
+echo "Tomnomnom Tools installed successfully."
 
+
+# Install Tomnomnom tools
 cd ~/
-
 go get github.com/tomnomnom/waybackurls
 go get -u github.com/tomnomnom/assetfinder
 go get -u github.com/tomnomnom/anew
-
 go get -u github.com/tomnomnom/gf
 echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
 mkdir .gf
 cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
-
 go get -u github.com/tomnomnom/gron
 alias ungron="gron --ungron"
 go get -u github.com/tomnomnom/qsreplace
 
-
-echo "installing dalfox  "
+# Install other tools
+echo "Installing dalfox"
 go get -u github.com/hahwul/dalfox
-echo "done "
+echo "Done"
 
-echo "installing Gf-Patterns  "
+echo "Installing Gf-Patterns"
 cd ~/
 git clone https://github.com/1ndianl33t/Gf-Patterns
 mkdir ~/.gf
 mv ~/Gf-Patterns/*.json ~/.gf
-echo "done"
+echo "Done"
 
-echo "installing nuclei"
+echo "Installing nuclei"
 GO111MODULE=auto go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
 nuclei -update-templates
-echo "done"
+echo "Done"
 
-echo "installing httpx"
+echo "Installing httpx"
 GO111MODULE=auto go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
-echo "done"
+echo "Done"
 
-echo "installing subfinder"
+echo "Installing subfinder"
 GO111MODULE=on go get -u -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
-echo "done"
+echo "Done"
 
-
-echo "installing shuffledns"
+echo "Installing shuffledns"
 GO111MODULE=on go get -u -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
-echo "done"
+echo "Done"
 
-echo "installing gau"
+echo "Installing gau"
 GO111MODULE=on go get -u -v github.com/lc/gau
-echo "done"
+echo "Done"
 
-echo "installing puredns"
+echo "Installing puredns"
 GO111MODULE=on go get github.com/d3mondev/puredns/v2
-echo "done"
+echo "Done"
 
-echo "installing ffuf"
+echo "Installing ffuf"
 go get github.com/ffuf/ffuf
-echo "done"
+echo "Done"
 
-
-echo "installing subjack"
+echo "Installing subjack"
 go get github.com/haccer/subjack
-echo "done"
+echo "Done"
 
-
-
-echo "installing gospider"
+echo "Installing gospider"
 go get -u github.com/jaeles-project/gospider
-echo "done"
+echo "Done"
 
 cd $ToolsPath/
 
-echo "installing crtndstry"
+echo "Installing crtndstry"
 git clone https://github.com/nahamsec/crtndstry.git
-echo "done"
+echo "Done"
+
+
 
 echo "downloading Seclists and other wordlists"
 cd $ToolsPath/
