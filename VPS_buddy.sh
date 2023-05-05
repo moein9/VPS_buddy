@@ -124,6 +124,7 @@ fi
 cd $ToolsPath/
 
 go env -w GO111MODULE=auto
+export GO111MODULE="on"
 
 # Install Aquatone
 echo "Installing Aquatone"
