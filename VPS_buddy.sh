@@ -27,7 +27,7 @@ echo "done"
 fi
 
 
-set -e
+#set -e
 #the above line id for exit on error un comment it if you want it ,it is better to exit if an error detected IMO.
 
 
