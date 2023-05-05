@@ -33,6 +33,15 @@ ToolsPath=/path/to/tools
 
 if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
     echo "Installing common tools and Python and few dependencies"
+    
+     # Install common packages
+    APT_INSTALL="sudo apt-get install -y"
+    PIP_INSTALL="pip3 install"
+    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python python3"
+    for pkg in $PACKAGES; do
+        $APT_INSTALL $pkg
+    done
+
 
     # Install pip
     cd ~ && curl  https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
@@ -41,14 +50,7 @@ if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
     rm get-pip.py
     pip3 install --upgrade pip
 
-    # Install common packages
-    APT_INSTALL="sudo apt-get install -y"
-    PIP_INSTALL="pip3 install"
-    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python python3"
-    for pkg in $PACKAGES; do
-        $APT_INSTALL $pkg
-    done
-
+   
     # Install Python packages
     $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun
 
