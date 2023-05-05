@@ -28,8 +28,8 @@ fi
 
 
 set -e
+#the above line id for exit on error ,it is better to exit if an error detected IMO.
 
-ToolsPath=/path/to/tools
 
 if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
     echo "Installing common tools and Python and few dependencies"
