@@ -123,7 +123,7 @@ fi
 #mkdir $ToolsPath
 cd $ToolsPath/
 
-go env -w GO111MODULE=off
+go env -w GO111MODULE=auto
 
 # Install Aquatone
 echo "Installing Aquatone"
@@ -453,32 +453,33 @@ mv ~/Gf-Patterns/*.json ~/.gf
 echo "Done"
 
 echo "Installing nuclei"
-GO111MODULE=auto go get -u -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei
+go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+
 nuclei -update-templates
 echo "Done"
 
 echo "Installing httpx"
-GO111MODULE=auto go get -u -v github.com/projectdiscovery/httpx/cmd/httpx
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 echo "Done"
 
 echo "Installing subfinder"
-GO111MODULE=on go get -u -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 echo "Done"
 
 echo "Installing shuffledns"
-GO111MODULE=on go get -u -v github.com/projectdiscovery/shuffledns/cmd/shuffledns
+go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 echo "Done"
 
 echo "Installing gau"
-GO111MODULE=on go get -u -v github.com/lc/gau
+$ go install github.com/lc/gau/v2/cmd/gau@latest
 echo "Done"
 
 echo "Installing puredns"
-GO111MODULE=on go get github.com/d3mondev/puredns/v2
+go install github.com/d3mondev/puredns/v2@latest
 echo "Done"
 
 echo "Installing ffuf"
-go get github.com/ffuf/ffuf
+go install github.com/ffuf/ffuf/v2@latest
 echo "Done"
 
 echo "Installing subjack"
