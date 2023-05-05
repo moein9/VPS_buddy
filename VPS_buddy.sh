@@ -4,14 +4,14 @@
 
 ToolsPath="/root/tools"
 mkdir $ToolsPath 2>/dev/null
-mkdir $ToolsPath/VPS_buddy_trash
+mkdir $ToolsPath/VPS_buddy
 mkdir /root/codes
 mkdir /root/targets
 
 
 
 
-if [[ ! -f  $ToolsPath/VPS_buddy_trash/.update_done ]]
+if [[ ! -f  $ToolsPath/VPS_buddy/update_done ]]
 then 
 
 echo "updating and upgrading"
@@ -21,7 +21,7 @@ apt-get -y install sudo
 sudo apt -y install git-all
 sudo apt full-upgrade -y
 
-touch $ToolsPath/VPS_buddy_trash/.update_done
+touch $ToolsPath/VPS_buddy/update_done
 echo "done"
 
 fi
@@ -31,7 +31,7 @@ fi
 #the above line id for exit on error un comment it if you want it ,it is better to exit if an error detected IMO.
 
 
-if [[ ! -f $ToolsPath/VPS_buddy_trash/common_tools ]]; then
+if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
     echo "Installing common tools and Python and few dependencies"
     
      # Install common packages
@@ -68,7 +68,7 @@ if [[ ! -f $ToolsPath/VPS_buddy_trash/common_tools ]]; then
     # Enable snapd
     systemctl enable --now snapd apparmor
 
-    touch $ToolsPath/VPS_buddy_trash/common_tools
+    touch $ToolsPath/VPS_buddy/common_tools
     echo "Done"
 fi
 
@@ -538,5 +538,4 @@ dnsvalidator -tL https://public-dns.info/nameservers.txt -threads 20 -o $ToolsPa
 esac
 
 echo "cleaning"
-rm -r  $ToolsPath/VPS_buddy_trash
 sudo apt autoremove
