@@ -31,7 +31,7 @@ fi
 #the above line id for exit on error un comment it if you want it ,it is better to exit if an error detected IMO.
 
 
-if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
+if [[ ! -f $ToolsPath/VPS_buddy_trash/common_tools ]]; then
     echo "Installing common tools and Python and few dependencies"
     
      # Install common packages
@@ -68,7 +68,7 @@ if [[ ! -f $ToolsPath/VPS_buddy_trash/.common_tools ]]; then
     # Enable snapd
     systemctl enable --now snapd apparmor
 
-    touch $ToolsPath/VPS_buddy_trash/.common_tools
+    touch $ToolsPath/VPS_buddy_trash/common_tools
     echo "Done"
 fi
 
