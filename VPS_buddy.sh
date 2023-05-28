@@ -37,7 +37,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
      # Install common packages
     APT_INSTALL="sudo apt-get install -y"
     PIP_INSTALL="pip3 install"
-    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2 python3 python-is-python3"
+    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2  python3.9 python-is-python3 python3-pip"
     for pkg in $PACKAGES; do
         $APT_INSTALL $pkg
     done
@@ -52,7 +52,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
 
    
     # Install Python packages
-    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns
+    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns shodan aiosqlite termcolor
 
     # Install docker
     curl -fsSL https://get.docker.com -o get-docker.sh
@@ -548,6 +548,8 @@ sudo apt autoremove
 echo "don't forget amass config.ini (/root/tools/config.ini)"
 echo "don't forget uncover provider-config.yaml (/root/.config/uncover/provider-config.yaml)"
 echo "don't forget subfinder provider-config.yaml (/.config/subfinder/provider-config.yaml)"
+echo "don't forget theHarvester api-keys.yaml (/etc/theHarvester/api-keys.yaml)"
+
 
 
 
