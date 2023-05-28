@@ -38,7 +38,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
      # Install common packages
     APT_INSTALL="sudo apt-get install -y"
     PIP_INSTALL="pip3 install"
-    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2 python3 python-is-python3"
+    PACKAGES="cargo jq ruby-full rubygems libcurl4-openssl-dev libssl-dev libxml2 libxml2-dev libxslt1-dev build-essential libgmp-dev zlib1g-dev dnsutils ghex parallel python2  python3.9 python-is-python3 python3-pip"
     for pkg in $PACKAGES; do
         $APT_INSTALL $pkg
     done
@@ -53,7 +53,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
 
    
     # Install Python packages
-    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns
+    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns shodan aiosqlite termcolor
 
     # Install docker
     curl -fsSL https://get.docker.com -o get-docker.sh
@@ -194,20 +194,6 @@ echo "Installing Bug-Bounty-Toolz"
 git clone https://github.com/m4ll0k/Bug-Bounty-Toolz.git
 echo "Bug-Bounty-Toolz installed"
 
-# Install Autorize
-echo "Installing Autorize"
-git clone https://github.com/Quitten/Autorize.git
-echo "Autorize installed"
-
-# Install Dr.-Watson
-echo "Installing Dr.-Watson"
-git clone https://github.com/prodigysml/Dr.-Watson.git
-echo "Dr.-Watson installed"
-
-# Install Reflector
-echo "Installing Reflector"
-git clone https://github.com/elkokc/reflector.git
-echo "Reflector installed"
 
 # Install BurpSuite_403Bypasser
 echo "Installing BurpSuite_403Bypasser"
@@ -233,11 +219,13 @@ cd ..
 echo "Sublist3r installed"
 
 echo "Installing urlgrab"
+go get -u github.com/iamstoxe/urlgrab
 cd $ToolsPath/
 git clone https://github.com/IAmStoxe/urlgrab.git
 cd urlgrab
 go build
 go install
+make build
 
 cd $ToolsPath/
 
@@ -247,12 +235,7 @@ cd takeover
 python3 -m pip install -r requirements.txt
 python3 setup.py install
 
-cd $ToolsPath/
 
-echo "Installing thorin"
-git clone https://github.com/raoufmaklouf/Thorin.git
-cd Thorin
-python3 -m pip install -r requirements.txt
 
 cd $ToolsPath/
 
@@ -493,7 +476,7 @@ go get github.com/haccer/subjack
 echo "Done"
 
 echo "Installing gospider"
-go get -u github.com/jaeles-project/gospider
+GO111MODULE=on go install github.com/jaeles-project/gospider@latest
 echo "Done"
 
 cd $ToolsPath/
@@ -550,6 +533,8 @@ echo "don't forget amass config.ini (/root/tools/config.ini)"
 echo "don't forget uncover provider-config.yaml (/root/.config/uncover/provider-config.yaml)"
 echo "don't forget subfinder provider-config.yaml (/.config/subfinder/provider-config.yaml)"
 echo "don't forget nuclei templates (for example ~/Templates/cookie-extractor.yaml)
+echo "don't forget theHarvester api-keys.yaml (/etc/theHarvester/api-keys.yaml)"
+
 
 
 
