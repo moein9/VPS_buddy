@@ -432,6 +432,7 @@ go get -u github.com/tomnomnom/gron
 alias ungron="gron --ungron"
 go install github.com/tomnomnom/qsreplace@latest
 
+
 # Install other tools
 
 echo "Installing Jeeves"
@@ -439,7 +440,7 @@ go install github.com/ferreiraklet/Jeeves@latest
 echo "Done"
 
 echo "Installing dalfox"
-go get -u github.com/hahwul/dalfox
+go install github.com/hahwul/dalfox/v2@latest
 echo "Done"
 
 echo "Installing Gf-Patterns"
