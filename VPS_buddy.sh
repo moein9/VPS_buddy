@@ -7,6 +7,7 @@ mkdir $ToolsPath 2>/dev/null
 mkdir $ToolsPath/VPS_buddy
 mkdir /root/codes
 mkdir /root/targets
+mkdir /root/Templates
 
 
 
@@ -531,6 +532,7 @@ sudo apt autoremove
 echo "don't forget amass config.ini (/root/tools/config.ini)"
 echo "don't forget uncover provider-config.yaml (/root/.config/uncover/provider-config.yaml)"
 echo "don't forget subfinder provider-config.yaml (/.config/subfinder/provider-config.yaml)"
+echo "don't forget nuclei templates (for example ~/Templates/cookie-extractor.yaml)
 echo "don't forget theHarvester api-keys.yaml (/etc/theHarvester/api-keys.yaml)"
 
 
