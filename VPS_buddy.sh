@@ -53,7 +53,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
 
    
     # Install Python packages
-    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns shodan aiosqlite termcolor
+    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns shodan aiosqlite termcolor uro
 
     # Install docker
     curl -fsSL https://get.docker.com -o get-docker.sh
@@ -427,7 +427,7 @@ mkdir .gf
 cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf
 go get -u github.com/tomnomnom/gron
 alias ungron="gron --ungron"
-go get -u github.com/tomnomnom/qsreplace
+go install github.com/tomnomnom/qsreplace@latest
 
 # Install other tools
 echo "Installing dalfox"
