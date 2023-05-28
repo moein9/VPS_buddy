@@ -432,7 +432,7 @@ echo "Tomnomnom Tools installed successfully."
 cd ~/
 go get github.com/tomnomnom/waybackurls
 go get -u github.com/tomnomnom/assetfinder
-go get -u github.com/tomnomnom/anew
+go install -v github.com/tomnomnom/anew@latest
 go get -u github.com/tomnomnom/gf
 echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc
 mkdir .gf
