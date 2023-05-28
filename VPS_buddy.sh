@@ -143,8 +143,9 @@ echo "Chromium installed"
 
 # Install Amass
 echo "Installing Amass"
-sudo snap install amass
-export PATH=$PATH:/snap/bin
+#sudo snap install amass
+#export PATH=$PATH:/snap/bin
+go install -v github.com/owasp-amass/amass/v3/...@master
 echo "Amass installed"
 
 # Install JSParser
