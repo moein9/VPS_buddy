@@ -218,11 +218,13 @@ cd ..
 echo "Sublist3r installed"
 
 echo "Installing urlgrab"
+go get -u github.com/iamstoxe/urlgrab
 cd $ToolsPath/
 git clone https://github.com/IAmStoxe/urlgrab.git
 cd urlgrab
 go build
 go install
+make build
 
 cd $ToolsPath/
 
