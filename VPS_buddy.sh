@@ -52,7 +52,7 @@ if [[ ! -f $ToolsPath/VPS_buddy/common_tools ]]; then
 
    
     # Install Python packages
-    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun
+    $PIP_INSTALL snallygaster py-altdns truffleHog dnspython==2.0.0 ddgr s3scanner dnsgen arjun aiohttp aiodns
 
     # Install docker
     curl -fsSL https://get.docker.com -o get-docker.sh
@@ -544,3 +544,10 @@ esac
 
 echo "cleaning"
 sudo apt autoremove
+
+echo "don't forget amass config.ini (/root/tools/config.ini)"
+echo "don't forget uncover provider-config.yaml (/root/.config/uncover/provider-config.yaml)"
+echo "don't forget subfinder provider-config.yaml (/.config/subfinder/provider-config.yaml)"
+
+
+
