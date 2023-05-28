@@ -413,11 +413,14 @@ echo "Unfurl installed successfully."
 echo "Installing Tomnomnom Tools..."
 cd $ToolsPath
 git clone https://github.com/tomnomnom/hacks.git
+cd hacks/kxss
+go build
 echo "Tomnomnom Tools installed successfully."
 
 
 # Install Tomnomnom tools
 cd ~/
+go get github.com/tomnomnom/burl
 go get github.com/tomnomnom/waybackurls
 go get -u github.com/tomnomnom/assetfinder
 go install -v github.com/tomnomnom/anew@latest
@@ -430,6 +433,11 @@ alias ungron="gron --ungron"
 go install github.com/tomnomnom/qsreplace@latest
 
 # Install other tools
+
+echo "Installing Jeeves"
+go install github.com/ferreiraklet/Jeeves@latest
+echo "Done"
+
 echo "Installing dalfox"
 go get -u github.com/hahwul/dalfox
 echo "Done"
@@ -538,6 +546,11 @@ echo "don't forget uncover provider-config.yaml (/root/.config/uncover/provider-
 echo "don't forget subfinder provider-config.yaml (/.config/subfinder/provider-config.yaml)"
 echo "don't forget nuclei templates (for example ~/Templates/cookie-extractor.yaml)
 echo "don't forget theHarvester api-keys.yaml (/etc/theHarvester/api-keys.yaml)"
+
+echo "---self note---"
+echo "don't forget wordlistest folder"
+echo "don't forget BLH.sh"
+
 
 
 
