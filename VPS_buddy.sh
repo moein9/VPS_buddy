@@ -473,7 +473,7 @@ go install -v github.com/projectdiscovery/shuffledns/cmd/shuffledns@latest
 echo "Done"
 
 echo "Installing gau"
-$ go install github.com/lc/gau/v2/cmd/gau@latest
+go install github.com/lc/gau/v2/cmd/gau@latest
 echo "Done"
 
 echo "Installing puredns"
