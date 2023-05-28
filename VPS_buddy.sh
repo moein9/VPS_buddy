@@ -419,7 +419,7 @@ go get github.com/KathanP19/protoscan
 echo "Protoscan installed successfully."
 
 echo "Installing Unfurl..."
-go get -u github.com/tomnomnom/unfurl
+go install github.com/tomnomnom/unfurl@latest
 echo "Unfurl installed successfully."
 
 echo "Installing Tomnomnom Tools..."
