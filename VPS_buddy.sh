@@ -193,20 +193,6 @@ echo "Installing Bug-Bounty-Toolz"
 git clone https://github.com/m4ll0k/Bug-Bounty-Toolz.git
 echo "Bug-Bounty-Toolz installed"
 
-# Install Autorize
-echo "Installing Autorize"
-git clone https://github.com/Quitten/Autorize.git
-echo "Autorize installed"
-
-# Install Dr.-Watson
-echo "Installing Dr.-Watson"
-git clone https://github.com/prodigysml/Dr.-Watson.git
-echo "Dr.-Watson installed"
-
-# Install Reflector
-echo "Installing Reflector"
-git clone https://github.com/elkokc/reflector.git
-echo "Reflector installed"
 
 # Install BurpSuite_403Bypasser
 echo "Installing BurpSuite_403Bypasser"
@@ -246,12 +232,7 @@ cd takeover
 python3 -m pip install -r requirements.txt
 python3 setup.py install
 
-cd $ToolsPath/
 
-echo "Installing thorin"
-git clone https://github.com/raoufmaklouf/Thorin.git
-cd Thorin
-python3 -m pip install -r requirements.txt
 
 cd $ToolsPath/
 
@@ -492,7 +473,7 @@ go get github.com/haccer/subjack
 echo "Done"
 
 echo "Installing gospider"
-go get -u github.com/jaeles-project/gospider
+GO111MODULE=on go install github.com/jaeles-project/gospider@latest
 echo "Done"
 
 cd $ToolsPath/
