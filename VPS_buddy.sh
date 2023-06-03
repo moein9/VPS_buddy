@@ -457,6 +457,12 @@ go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
 nuclei -update-templates
 echo "Done"
 
+echo "Installing katana"
+
+go install github.com/projectdiscovery/katana/cmd/katana@latest
+echo "Done"
+
+
 echo "Installing httpx"
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 echo "Done"
