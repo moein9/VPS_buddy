@@ -400,7 +400,8 @@ go get -u github.com/Raywando/ppscanner
 echo "Ppscanner installed successfully."
 
 echo "Installing Hakrawler..."
-go get github.com/hakluke/hakrawler
+go install github.com/hakluke/hakrawler@latest
+
 echo "Hakrawler installed successfully."
 
 echo "Installing Protoscan..."
