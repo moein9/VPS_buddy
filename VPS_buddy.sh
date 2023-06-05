@@ -436,6 +436,11 @@ go install github.com/tomnomnom/qsreplace@latest
 
 
 # Install other tools
+echo "Installing linkinjs"
+
+go get -u github.com/rc4ne/linkinjs
+echo "Done"
+
 
 echo "Installing Jeeves"
 go install github.com/ferreiraklet/Jeeves@latest
